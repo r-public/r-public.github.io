@@ -293,3 +293,6 @@ footer {
 .matched{
   background-color: red;
 }
+.subtext{
+  font-size: 10px;
+}

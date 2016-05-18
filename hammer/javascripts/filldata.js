@@ -32,25 +32,72 @@ function display(data){
 }
 
 function search(where = "everywhere"){
-    if(where=="everywhere"){
+    searchphrase = ""
+    if (where=="everywhere")
         searchphrase = $("#srchbar").val()
+    if (searchphrase.indexOf("in:title") >= 0){
+        where = "title"
+    }
+    else if (searchphrase.indexOf("in:desc") >= 0){
+        where = "desc"
+    }    
+    if(where=="everywhere"){        
         $("#data").html("<h2>Search Results for <i>"+searchphrase+"</i></h2>")
-        searchterms = searchphrase.split(' ')
-        for (i in searchterms){
-            word = searchterms[i]
-            for (j in data){
-                titleindex = data[j]['title'].indexOf(word)
-                descindex = data[j]['desc'].indexOf(word)
-                if (titleindex>0 || descindex>0){
-                    var tempdata = JSON.parse(JSON.stringify(data[j])) //Best Way to Clone! 
-                    tempdata['desc'] = tempdata['desc'].split(word).join("<span class='matched'>"+word+"</span>")
-                    tempdata['title'] = tempdata['title'].split(word).join("<span class='matched'>"+word+"</span>")
-                    display([tempdata])
+        searchphrase = searchphrase.trim().toLowerCase()
+        for (j in data){
+            var titleindex = data[j]['title'].toLowerCase().indexOf(searchphrase)
+            var descindex = data[j]['desc'].toLowerCase().indexOf(searchphrase)
+            if (titleindex>0 || descindex>0){
+                var tempdata = JSON.parse(JSON.stringify(data[j])) 
+                tempdata['desc'] = tempdata['desc'].toLowerCase().split(searchphrase).join("<span class='matched'>"+searchphrase+"</span>")
+                tempdata['title'] = tempdata['title'].toLowerCase().split(searchphrase).join("<span class='matched'>"+searchphrase+"</span>")
+                display([tempdata])
+                
+            }
+            else{
+                searchterms = searchphrase.split(' ')
+                for (k in searchterms){
+                    var tempdata = JSON.parse(JSON.stringify(data[j])) 
+                    var flagged = false;
+                    titleindex = data[j]['title'].toLowerCase().indexOf(searchterms[k])
+                    descindex = data[j]['desc'].toLowerCase().indexOf(searchterms[k])
+                    if (titleindex>0 || descindex>0){
+                        flagged = true;
+                        tempdata['desc'] = tempdata['desc'].toLowerCase().split(searchterms[k]).join("<span class='matched'>"+searchterms[k]+"</span>")
+                        tempdata['title'] = tempdata['title'].toLowerCase().split(searchterms[k]).join("<span class='matched'>"+searchterms[k]+"</span>")
+                        
+                    }
                 }
+                if (flagged)
+                    display([tempdata])
             }
         }
     }
-    else{
+    else if (where=="title" || where == "desc"){
+        searchphrase = searchphrase.replace("in:"+where,"").trim().toLowerCase()
+        $("#data").html("<h2>Search Results for <i>"+searchphrase+"</i> in the "+where+"</h2>")
+        for (j in data){
+            if (data[j][where].toLowerCase().indexOf(searchphrase)>=0){
+                var tempdata = JSON.parse(JSON.stringify(data[j])) 
+                tempdata[where] = tempdata[where].toLowerCase().split(searchphrase).join("<span class='matched'>"+searchphrase+"</span>")
+                display([tempdata])
+            }
+            else{
+                searchterms = searchphrase.split(' ')
+                var flagged = false;
+                var tempdata = JSON.parse(JSON.stringify(data[j]))
+                for (k in searchterms){
+                    if (data[j][where].toLowerCase().indexOf(searchterms[k])>=0){
+                        flagged = true;
+                        tempdata[where] = tempdata[where].toLowerCase().split(searchterms[k]).join("<span class='matched'>"+searchterms[k]+"</span>")
+                    }
+                }
+                if (flagged)
+                    display([tempdata])
+            }
+        }
+    }
+    else{        
         $("#data").html("<h2>Search Results for posts tagged <i>"+where+"</i></h2>")
         for (j in data){
             tags = data[j]['tags']
