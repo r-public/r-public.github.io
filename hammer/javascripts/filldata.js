@@ -3,7 +3,7 @@ $( document ).ready(init);
 function init(){
     $("#srchbar").keyup(function(event){
         if(event.keyCode == 13){
-            search()
+            search("everywhere")
         }
     });
     data = {}
@@ -31,7 +31,7 @@ function display(data){
     $("#data").append(fillstr)
 }
 
-function search(where = "everywhere"){
+function search(where){
     searchphrase = ""
     if (where=="everywhere")
         searchphrase = $("#srchbar").val()
