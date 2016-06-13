@@ -19,7 +19,8 @@ function display(data){
     fillstr = ""; 
     for (i in data){
         fillstr+= "<p>"
-        fillstr+= "<h3><a href='"+data[i]['question']+"'>"+data[i]['title']+"</a></h3>"
+        fillstr+= "<div class='head'><div class='scorecard'><span class='score'>"+data[i]['score']+"</span><span class='scorevotes'>votes</span></div>"
+        fillstr+= "<div class='questiontitle'><h3><a href='"+data[i]['question']+"'>"+data[i]['title']+"</a></h3></div></div>"
         fillstr+= "<div>"+data[i]['desc']+"</div><div>"
         for(j in data[i]["tags"]){
             tagname = data[i]['tags'][j]

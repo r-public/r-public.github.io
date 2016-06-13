@@ -296,3 +296,28 @@ footer {
 .subtext{
   font-size: 10px;
 }
+.scorecard{
+  border: 2px solid rgb(51, 153, 204);
+  padding: 2px;
+  display: inline-block;
+  text-align: center;
+}
+.questiontitle{
+  padding-bottom: 1500px;
+  margin-bottom: -1500px;  
+  height: 100%;
+  display: inline-block; 
+}
+.questiontitle h3{
+  padding: 2px;
+  display: inline;
+  overflow-x: scroll;
+}
+.score{
+  font-size: 30px;
+  display: block;
+}
+.head {
+  overflow: hidden;
+  display: flex;
+}
