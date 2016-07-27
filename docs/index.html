@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="chrome=1">
+		<title>R Documentation on Stack Overflow</title>
+		<link rel='shortcut icon' href='http://i.stack.imgur.com/vPyXa.gif' />
+		<link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <meta name="viewport" content="width=device-width">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+			<header>
+				<h1>R Documentation on Stack Overflow</h1>
+				
+				<p>A page to serve as guidelines for helping us create a good resource at Stack Overflow's new documentation feature. 
+         Visit the <a href="http://chat.stackoverflow.com/rooms/25312/r-public">R Public</a> chatroom to discuss more about the documentation.</p>
+      </header>
+      <section>
+
+
+<h1>Making good examples</h1>
+
+<p>Most of the <a href="http://stackoverflow.com/q/5963269/">guidance for creating good examples for Q&amp;A</a> carries over here. Make it minimal and get to the point. Overcomplicated example data and digressions are probably counterproductive. Make it self-contained to the extent possible. If linking to external resources for reference, make sure that the example stands on its own. If linking to external resources for data, well, um, try not to; and then try some more; and then try to link only to data sources that will be around with the API you're using for a very, very long time.</p>
+
+<p>Some new considerations come up for documentation: </p>
+
+<ul>
+<li>Refer to built-in docs like <code>?seq</code> whenever relevant. We are not trying to replace those docs and want to make sure people new to R know that they are there and how to find them. </li>
+<li>Take advantage of the other sections. If you want to explain something about the topic (that will apply to multiple examples), then use the Remarks section.</li>
+</ul>
+
+<h2>Style</h2>
+
+<ul>
+<li><em>Prompts.</em> Do not put prompts like <code>R&gt;</code>, <code>&gt;</code> or <code>+</code> at the beginning of each line of code. These make it harder for readers to copy your code, try it out and iterate on it to learn how it works.</li>
+<li><em>Console output.</em> For console output, the goal is to distinguish it from the code. There's no point trying to impose a particular approach to this, but here are some that are common in the R tag on SO:
+<ul>
+<li>Comment out all output, with <code>#</code> or <code>##</code> starting each line.</li>
+<li>Print as-is, trusting the leading <code>[1]</code> to make the output stand out from the input.</li>
+<li>Add a blank line or two between code and console output.</li>
+</ul></li>
+<li><em>Code comments.</em> It is good to explain what's going on in the code. There's no hard-and-fast rule on whether this explanation should be in prose or in code comments. Prose may be more readable and allows for longer explanations, but code comments make for easier copy-pasting. Just keep both options in mind.</li>
+</ul>
+
+<h2>Scope</h2>
+
+<p>As of July 2016, early in the public beta, it's still TBD what does and does not make a good example. If you want to write a tutorial rather than a simple, concise illustration, go ahead, understanding that new norms for what fits may develop.</p>
+
+<h1>Organization of the docs</h1>
+
+<p>SO has given no guidance on how they envision topics being organized, and have explained that they don't really care, since readers will come directly from search engines to a page anyways. For our own purposes, as maintainers and editors of the docs, we want to organize it so that we minimize duplication and have plenty of internal links to related examples and topics. We can figure that out as we go.</p>
+
+      </section>
+      <footer>
+        <p>This page is maintained by <a href="https://github.com/orgs/r-public/people">R Public Team</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+  </body>
+</html>
